@@ -1,0 +1,45 @@
+.landingPage{
+    width: 100%;
+    height: 100vh;;
+    background-image: url('C:\Users\Alumno\Desktop\henry challenge\Proyecto Individual-Henry-\PI-Countries-main\client\src\images\wp2591764.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frase{
+
+    font-size: 45px;
+    text-decoration: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: rgb(230, 199, 188);
+    box-shadow: 0 2rem 2rem var(--black);
+    color: rgb(64, 116, 51);
+}
+
+.linkLading{
+    text-decoration: transparent;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3rem;
+    background: rgba(24, 180, 58, 0.322);
+    box-shadow: 0 2rem 2rem var(--black);
+    transition: all 0.2s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.linkLading h1 {
+    color: rgba(75, 71, 75, 0.87) ;
+    font-style: oblique; 
+    font-size: 4rem;
+    text-shadow: 0 0 1rem var(--black);
+  }
+  
+  .linkLading:hover {
+    transform: scale(1.1);
+  }

@@ -1,0 +1,25 @@
+.home{
+    background-color: lightgray;  
+    background-image: url("https://img.freepik.com/vector-gratis/impresion-cartel-concepto-hito-viaje_1284-13615.jpg?w=2000");
+    background-size: 100% ;
+    display: flex;
+     flex-direction: column;
+     height:inherit;
+ }
+ 
+ .filters{
+     position: sticky;
+     font-style: italic;  
+     color: rgb(62, 182, 46);
+     background-color: rgb(59, 73, 68);
+     top: 100px;
+     align-items: center;
+ }
+ 
+ .pagination{
+        display: flex;
+     align-self: center;
+     border-radius: 20px;
+
+     background-color: transparent;
+ }
