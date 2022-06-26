@@ -4,5 +4,10 @@
     font-size: 70px;
     display: flex;
     justify-content: center;
+    background-image: url('https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2016/11/14/14791501689120.jpg');
  
+}
+
+.div{
+    background-image:url('https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2016/11/14/14791501689120.jpg');
 }

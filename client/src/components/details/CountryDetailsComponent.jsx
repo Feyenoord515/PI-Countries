@@ -5,12 +5,12 @@ import { getCountryById } from "../../redux/actions";
 import './countryDetailsComponent.css'
 
 function CountryDetailsComponent() {
-    const dispatch = useDispatch();
-    const country = useSelector(state => state.country);
+    const dispatch = useDispatch(); //dispatching actions
+    const country = useSelector(state => state.country); //getting the country from the store
     const { name, flags, continent, capital, subregion, area, population, activities} = country;
-    let { id } = useParams();
-    useEffect(() => {
-        dispatch(getCountryById(id))
+    let { id } = useParams(); //traer el id del url
+    useEffect(() => {  //cargar el pais al iniciar la pagina
+        dispatch(getCountryById(id)) 
     }, [dispatch, id])
     return(
         <div className="details">
@@ -56,10 +56,14 @@ function CountryDetailsComponent() {
                     <div className="countryInfo">
                         <div className="detailActivities">
 
-                        {activities && activities.map(activity => {
+                        {activities && activities.map(activity => { 
                             return(
-                                <h2  key={activity.id}>{activity.name}</h2>
-                                )
+                                <><h2 key={activity.id}>Detalle: {activity.name}</h2>
+                                <h2>Temporada: {activity.seasson}</h2>
+                                <h2>Dificultad: {activity.difficulty}</h2>
+                                <h2>Duracion: {activity.duration} hs</h2></> 
+                               
+                            )
                             })}
                         </div>
                     </div>

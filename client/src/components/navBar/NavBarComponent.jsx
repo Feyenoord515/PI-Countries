@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 import SearchBarComponent from "../searchBar/SearchBarComponent";
 import logo from '../../assets/pngwing.com.png'
 import './navBar.css'
 
-function NavBarCompoment(params) {
+function NavBarCompoment(params) { 
     return(
         <div className="navbar">
                 <div className="logo">

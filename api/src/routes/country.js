@@ -3,7 +3,7 @@ const { getCountryById } = require("../controllers/countryControllers/getControl
 const router = Router();
 
 router.get('/:id', async function(req, res) {
-    const { id } = req.params;
+    const { id } = req.params; 
     try {
         const countryByID = await getCountryById(id);
         if(countryByID){

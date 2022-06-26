@@ -5,7 +5,8 @@ import OrderNamesComponent from "./OrderNamesComponent";
 import OrderPopulationComponent from "./OrderPopulationComponent";
 import './filterIndexComponent.css'
 import RightArrow from '../../assets/arrow-icon-1177.png'
-export default function FiltersIndexComponent() {
+
+export default function FiltersIndexComponent() { 
     return(
         <div className="filters">
             <input id="filtersDisplay" type='checkbox'></input>
@@ -13,7 +14,7 @@ export default function FiltersIndexComponent() {
             <div className="hiddenFilters">
                 <div className="filterContinent">
                     <h3>Continentes</h3>
-                    <FilterByContinentComponent />
+                    <FilterByContinentComponent /> 
                 </div>
                 <div className="filterActivities">
                     <h3>Actividades</h3>
@@ -30,4 +31,4 @@ export default function FiltersIndexComponent() {
             </div>
         </div>
     )
-}
+} 

@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; 
 import logo from '../../assets/pngwing.com.png'
 import './landingPageComponent.css'
 
-function LandingPageComponent() {
+function LandingPageComponent() { 
     return(
         <div className="landingPage">
             <h1 className="frase">Bienvenidos al Mundo!!!</h1>

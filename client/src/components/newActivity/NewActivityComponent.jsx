@@ -6,22 +6,23 @@ import validate from "./validators";
 import './newActivityComponent.css'
 
 function NewActivityComponent() {
-    const dispatch = useDispatch() //despachar action
-    const allCountries = useSelector(state => state.allCountries)//estado de store
-    const navigate = useNavigate()
+    const dispatch = useDispatch() 
+    const allCountries = useSelector(state => state.allCountries)
+    const navigate = useNavigate() 
 
-    useEffect(() => {
-        dispatch(getAllCountries())
-    }, [dispatch])
+    useEffect(() => { 
+        dispatch(getAllCountries()) //dispatching the action
+    }, [dispatch]) 
 
     let countriesList = allCountries.map(country => {
-        return({
-            name:country.name,
-            flag: country.flags
+        return({ 
+            name:country.name
+
+            
         })
     });
-    const [selected, setSelected] = useState("");
-    const [errors, setErrors] = useState({});
+    const [selected, setSelected] = useState(""); 
+    const [errors, setErrors] = useState({firstTry: true})//
     const [activity, setActivity] = useState({
         name: '',
         difficulty: '',
@@ -35,36 +36,51 @@ function NewActivityComponent() {
             ...activity,
             [e.target.name]: e.target.value
         });
-        if(!errors){
-            setErrors(validate({
+        if(!errors.firstTry){
+            setErrors(validate({ 
                 ...activity,
                 [e.target.name]: e.target.value
             }))
         }
     }
 
-    function handleSeasons(e) {
-        if(e.target.value !== 'Seleccionar' && !activity.seasson.includes(e.target.value)){
-            setActivity({
+    function handleSeasons(e) { 
+        if(e.target.value !== 'Seleccionar' && !activity.seasson.includes(e.target.value)){ 
+            setActivity({ 
                 ...activity,
-                season: e.target.value
+                seasson: e.target.value
             })
-            if(!errors){
+            if(!errors.firstTry){
             setErrors(validate({
                 ...activity,
-                season: e.target.value
+                seasson: e.target.value
             }))
             }
         }
     }
 
-    function handleCountries(e) {
-        if(e.target.value !== 'Seleccionar' && !activity.countries.includes(e.target.value)){
+    function handleDifficulty(e) { 
+        if(e.target.value !== 'Seleccionar' && !activity.difficulty.includes(e.target.value)){
+            setActivity({
+                ...activity,
+                difficulty: e.target.value
+            })
+            if(!errors.firstTry){
+            setErrors(validate({
+                ...activity,
+                difficulty: e.target.value
+            }))
+            }
+        }
+    }
+
+    function handleCountries(e) { 
+        if(e.target.value !== 'Seleccionar' && !activity.countries.includes(e.target.value)){ 
             setActivity({
                 ...activity,
                 countries: [...activity.countries, e.target.value]
             })
-            if(!errors){
+            if(!errors.firstTry){
             setErrors(validate({
                 ...activity,
                 countries: [...activity.countries, e.target.value]
@@ -74,12 +90,12 @@ function NewActivityComponent() {
         }
     }
 
-    function deleteCountry(e) {
+    function deleteCountry(e) { 
         setActivity({
             ...activity,
-            countries: activity.countries.filter(country => country !== e.target.value)
+            countries: activity.countries.filter(country => country !== e.target.value) 
         })
-        if(!errors){
+        if(!errors.firstTry){
             setErrors(validate({
                 ...activity,
                 countries: activity.countries.filter(country => country !== e.target.value)
@@ -87,32 +103,32 @@ function NewActivityComponent() {
         }
     };
 
-    function handleCheckErrors(e) {
+    function handleCheckErrors(e) { 
         e.preventDefault();
-        setErrors(validate({
+        setErrors(validate({ 
             ...activity,
             [e.target.name]: e.target.value,
             countries: [...activity.countries, e.target.value]
         }))
-        handleSubmit(e)
+        handleSubmit(e) 
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e) { 
         e.preventDefault();
-        if(activity.name && activity.difficulty && activity.duration && activity.seasson && activity.countries.length >= 1){
-        dispatch(postActivity(activity));
+        if(activity.name && activity.difficulty && activity.duration && activity.seasson && activity.countries.length >= 1){ //si todos los campos estan llenos
+        dispatch(postActivity(activity)); 
         alert('Actividad creada exitosamente');
-        setActivity({
+        setActivity({ 
             name: '',
                 difficulty: '',
                 duration: '',
                 seasson: '',
                 countries: []
             });
-     
-        navigate('/home')
+            errors.firstTry = false 
+        navigate('/home'); 
         }
-        if(errors){
+        if(errors.firstTry){ 
             alert('Completar los campos correspondientes')
         }
     }
@@ -132,28 +148,33 @@ function NewActivityComponent() {
                             value={activity.name}
                             onChange={e => handleChange(e)}
                             />
-                        </div>
+                       </div>
                             {errors.name && (<p>{errors.name}</p>)}
+                            
                         <div className="info">
-                            <label>Dificultad (De 1 a 5)</label>
-                            <input
-                            type='text'
-                            name='difficulty'
-                            value={activity.difficulty}
-                            onChange={e => handleChange(e)}
-                            />
-                        </div>
+                        <h3>Dificultad</h3>
+                                <select onChange={e => handleDifficulty(e)}>
+                                    <option>Seleccionar</option>
+                                    <option value='1'>Facil</option>
+                                    <option value='2'>Regular</option>
+                                    <option value='3'>Dificil</option>
+                                    <option value='4'>Muy Dificil</option>
+                                    <option value='5'>Extremo</option>
+                                </select>
+                                </div>
                             {errors.difficulty && (<p>{errors.difficulty}</p>)}
+                          
                         <div className="info">
-                            <label>Duracion (Formato 24hs)</label>
+                            <label>Duracion(hs)</label>
                             <input
                             type='text'
                             name='duration'
                             value={activity.duration}
                             onChange={e => handleChange(e)}
                             />
-                        </div>
-                            {errors.duration && (<p>{errors.duration}</p>)}
+                              </div>
+                         {errors.duration && (<p>{errors.duration}</p>)}
+                         
                     </div>
                     <div>
                         <div>
@@ -161,13 +182,14 @@ function NewActivityComponent() {
                                 <h3>Temporada</h3>
                                 <select onChange={e => handleSeasons(e)}>
                                     <option>Seleccionar</option>
-                                    <option value='Spring'>Primavera</option>
-                                    <option value='Summer'>Verano</option>
-                                    <option value='Autumn'>Otoño</option>
-                                    <option value='Winter'>Invierno</option>
+                                    <option value='Primavera'>Primavera</option>
+                                    <option value='Verano'>Verano</option>
+                                    <option value='Otoño'>Otoño</option>
+                                    <option value='Invierno'>Invierno</option>
                                 </select>
-                            </div>
-                                {errors.season && (<p>{errors.season}</p>)}
+                                </div>
+                           {errors.seasson && (<p>{errors.seasson}</p>)}
+                           
                         </div>
                         <div>
                             <div className="info">
@@ -178,17 +200,19 @@ function NewActivityComponent() {
                                         return(
                                             <option key={country.name}>
                                                 {country.name}
+                                                {country.flags}
                                             </option>
                                         )
                                     })}
                                 </select>
-                            </div>
+                                </div>
                                 {errors.countries && (<p>{errors.countries}</p>)}
+                                
                             <div className="displayCountries">
                                 {activity.countries.map((country) => {
                                     return(
                                         <div className="eachCountry" key={country}>
-                                            <p className="countryName">{country}</p>
+                                            <h2 className="countryName">{country}</h2>
                                             <button className="closeButton" onClick={e => {deleteCountry(e)}} value={country}>X</button>
                                         </div>
                                     )
@@ -197,13 +221,13 @@ function NewActivityComponent() {
                         </div>
                     </div>
                     <div>
-                    {errors.name || 
-                    errors.activity || 
-                    errors.duration || 
-                    errors.season || 
-                    errors.countries ?
-                    <button disabled>Crear Actividad</button>
-                    :<button className="crearActividad" onClick={e => handleCheckErrors(e)}>Crear Actividad</button>}
+                   
+                   
+                     {errors.name || errors.activity ||  errors.duration || errors.seasson ||   errors.countries ? <button disabled className="crearActividad" onClick={e => handleCheckErrors(e)}>Crear Actividad</button>:
+                   
+                   <button className="crearActividad" onClick={e => handleCheckErrors(e)}>Crear Actividad</button>}
+                   
+                  
                     </div>
                 </form>
             </div>

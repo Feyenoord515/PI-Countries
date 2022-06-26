@@ -7,7 +7,7 @@ export default function FilterByContinentComponent() {
     const countries = useSelector(state => state.backUpCountries)
     const [continent, setContinent] = useState('')
 
-    useEffect(() => {
+    useEffect(() => { 
         if(continent !== ''){
             if(continent === 'Seleccionar'){
                 dispatch(getAllCountries())
@@ -16,17 +16,16 @@ export default function FilterByContinentComponent() {
             }
         }
     }, [dispatch, continent])
-
     const continents = () => {
         let continentsList = countries.map(country => country.continent)
         let continents = continentsList.filter((continent, index) => {
-            return continentsList.indexOf(continent) === index;
+            return continentsList.indexOf(continent) === index; 
         });
         return continents
     }
 
     function handleByContinent(e) {
-        setContinent(e.target.value)
+        setContinent(e.target.value) 
     }
 
     return(
@@ -34,7 +33,7 @@ export default function FilterByContinentComponent() {
             <div>
                 <select onChange={e => handleByContinent(e)}>
                     <option>Seleccionar</option>
-                    {continents().map(cont => {
+                    {continents().map(cont => { 
                         return(
                             <option key={cont} value={cont}>{cont}</option>
                         )

@@ -2,6 +2,7 @@ const axios = require('axios');
 const { Op } = require('sequelize');
 const { Country, Activity } = require('../../db.js')
 
+
 const getCountries = async () => {
     let dbCountries = await Country.findAll({
         include: [Activity]
@@ -15,14 +16,15 @@ const getCountries = async () => {
                     id: country.cca3,
                     name: country.name.common,
                     flags: country.flags[1],
-                    continent: country.continent[0],
+                    continent: country.continents[0],
                     capital: country.capital ? country.capital[0] : 'Undefined capital city',
                     subregion: country.subregion ? country.subregion : 'Undefinded Subregion',
                     area: country.area,
                     population: country.population
                 };
             })
-        
+           
+
             countries.forEach((country) => {
                 Country.findOrCreate({
                     where: { id: country.id },

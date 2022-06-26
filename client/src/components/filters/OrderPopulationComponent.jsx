@@ -2,33 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {filterByMaxPopulation, filterByMinPopulation, getAllCountries } from "../../redux/actions";
 
-export default function OrderPopulationComponent() {
-    const dispatch = useDispatch()
+export default function OrderPopulationComponent() { 
+    const dispatch = useDispatch() 
     const [population, setPopulation] = useState('')
-
-    useEffect(() => {
+    useEffect(() => { 
         if(population !== ''){
-            if(population === 'Seleccionar'){
-                dispatch(getAllCountries())
+            if(population === 'Seleccionar'){ 
+                dispatch(getAllCountries()) 
             }
-            if(population === 'max'){
-                dispatch(filterByMaxPopulation())
+            if(population === 'max'){ 
+                dispatch(filterByMaxPopulation()) 
             }
-            if(population === 'min'){
-                dispatch(filterByMinPopulation())
+            if(population === 'min'){ 
+                dispatch(filterByMinPopulation()) 
             }
         }
-    }, [dispatch, population])
+    }, [dispatch, population]) 
 
     
-    function handleOrderPopulation(e) {
+    function handleOrderPopulation(e) { 
         setPopulation(e.target.value)
     }
 
     return(
         <div>
             <div>
-                <select onChange={e => handleOrderPopulation(e)}>
+                <select onChange={e => handleOrderPopulation(e)}> 
                     <option>Seleccionar</option>
                     <option value="max" >Mayor poblacion</option>
                     <option value="min" >Menor poblacion</option>

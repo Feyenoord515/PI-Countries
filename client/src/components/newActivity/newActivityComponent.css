@@ -34,11 +34,11 @@
 
 .eachCountry{
     display: flex;
-    background-color: var(--contrast);
-    margin: 5px;
+    background-color: #fc950f;
+    margin: auto;
     border-radius: 5px;
     color: white;
-    height: 25px;
+    height: 30px;
     padding-top: 5px;
 }
 

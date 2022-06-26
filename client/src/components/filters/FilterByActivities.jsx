@@ -4,22 +4,22 @@ import { filterByActivities, getAllActivities } from "../../redux/actions";
 import './filterByActivitiesComponent.css'
 
 export default function FilterByActivities() {
-    const dispatch = useDispatch()
-    const allActivities = useSelector(state => state.allActivities)
-    const [activities, setActivities] = useState([])
+    const dispatch = useDispatch() 
+    const allActivities = useSelector(state => state.allActivities) 
+    const [activities, setActivities] = useState([]) 
 
-    useEffect(() => {
-        dispatch(getAllActivities())
-        dispatch(filterByActivities(activities))
+    useEffect(() => {  
+        dispatch(getAllActivities()) 
+        dispatch(filterByActivities(activities)) 
     }, [dispatch, activities])
 
 
-    function handleActivities(e) {
+    function handleActivities(e) { 
         if(e.target.value !== 'Seleccionar' && !activities.includes(e.target.value)){
             setActivities([...activities, e.target.value])
         }
     }
-    function handleDeleteActivities(e) {
+    function handleDeleteActivities(e) { 
         setActivities(activities.filter(activity => activity !== e.target.value))
     }
 
@@ -29,11 +29,11 @@ export default function FilterByActivities() {
                 <div>
                     <select onChange={e => handleActivities(e)}>
                         <option>Seleccionar</option>
-                        {allActivities.map(acti => {
-                            return(
-                                <option key={acti.name} value={acti.name}>{acti.name}</option>
+                        { allActivities.map((acti => (
+                           
+                                <option value={acti.name}>{acti.name}</option>
                                 )
-                            })}
+                            ))}
                     </select>
                 </div>
                 <div className="displayActivities">

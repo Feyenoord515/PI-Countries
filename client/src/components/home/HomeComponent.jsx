@@ -7,17 +7,16 @@ import PaginationComponent from "../pagination/PaginationComponent";
 import './homeComponent.css'
 
 function HomeComponent() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
     const allCountries = useSelector(state => state.allCountries)
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPages] = useState(9);
-
-    useEffect(() => {
+    const [itemsPerPages] = useState(10); 
+    useEffect(() => { 
         dispatch(getAllCountries())
-    }, [dispatch])
+    }, [dispatch]) 
 
-    const indexOfLastItem = currentPage * itemsPerPages;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPages;
+    const indexOfLastItem = currentPage * itemsPerPages; 
+    const indexOfFirstItem = indexOfLastItem - itemsPerPages; 
     const currentItems = allCountries.slice(indexOfFirstItem, indexOfLastItem)
 
 

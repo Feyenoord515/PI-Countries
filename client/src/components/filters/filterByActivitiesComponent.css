@@ -8,7 +8,7 @@
 
 .eachActivity{
     display: flex;
-    background-color: var(--contrast);
+    background-color: #f5f5f5;
     margin: 5px;
     border-radius: 5px;
     color: white;
@@ -16,6 +16,12 @@
 
 .activityName{
     margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: black;
+    background-color: chartreuse;
 }
 
 .closeButton{

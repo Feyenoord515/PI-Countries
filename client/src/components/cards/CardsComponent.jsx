@@ -5,10 +5,9 @@ import './cardsComponent.css'
 function CardsComponent({allCountries}) {
     return(
         <div className="cards">
-            {allCountries && allCountries.map((country) => {
+            {allCountries && allCountries.map((country) => { 
                 return(
-                    <CardComponent
-                    key={country.id}
+                    <CardComponent 
                     id={country.id}
                     name={country.name}
                     flags={country.flags}

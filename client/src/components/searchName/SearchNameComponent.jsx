@@ -6,15 +6,15 @@ import CardsComponent from "../cards/CardsComponent";
 import './searchName.css'
 
 function SearchNameComponent() {
-    const dispatch = useDispatch()
-    const byNameContries = useSelector(state => state.byNameCountries)
-    const {name} = useParams();
+    const dispatch = useDispatch() 
+    const byNameContries = useSelector(state => state.byNameCountries) 
+    const {name} = useParams(); 
 
-    useEffect(() => {
+    useEffect(() => { 
         dispatch(getCountriesByName(name))
-    }, [dispatch, name])
+    }, [dispatch, name]) 
 
-    return(
+    return( 
         <div>
             <div>
                 <h1 className="titleSearch">Resultados para "{name}"</h1>

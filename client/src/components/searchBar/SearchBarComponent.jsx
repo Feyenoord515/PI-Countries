@@ -2,18 +2,18 @@ import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import './searchBarComponent.css'
 
-function  SearchBarComponent() {
+function  SearchBarComponent() { 
     const [name, setName] = useState('');
-    function handleInputName(e) {
+    function handleInputName(e) { 
         e.preventDefault();
-        setName(e.target.value)
+        setName(e.target.value) 
     }
 
-    function handleClick(e){
+    function handleClick(e){ 
         setName('');
     };
 
-    return(
+    return( 
         <div className="searchBarComponent">
             <form>
                 <input

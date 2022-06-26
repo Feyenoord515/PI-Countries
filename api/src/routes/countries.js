@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const { getCountries, getCountriesByName } = require('../controllers/countriesControllers/getControllers')
-const router = Router()
+const router = Router() 
 
-router.get('/', async function(req, res) {
+router.get('/', async function(req, res) { 
     const { name } = req.query;
     try {
         if(name){
