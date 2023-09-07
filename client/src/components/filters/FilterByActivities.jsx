@@ -24,7 +24,7 @@ export default function FilterByActivities() {
     }
 
     return(
-        <div className="activities">
+        <div className="text-black">
             <div>
                 <div>
                     <select onChange={e => handleActivities(e)}>

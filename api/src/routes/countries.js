@@ -3,7 +3,7 @@ const { getCountries, getCountriesByName } = require('../controllers/countriesCo
 const router = Router() 
 
 router.get('/', async function(req, res) { 
-    const { name } = req.query;
+    const { name } = req.query; 
     try {
         if(name){
             const byNameCountries = await getCountriesByName(name)
@@ -14,6 +14,7 @@ router.get('/', async function(req, res) {
             }
         } else {
             const allCountries = await getCountries();
+            
             if(allCountries){
                 res.status(200).send(allCountries)
             } else {

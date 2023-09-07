@@ -13,12 +13,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+   
      flags: { 
       type: DataTypes.STRING,
        allowNull: false 
       },
       continent: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
       },
       capital: {
@@ -34,6 +35,8 @@ module.exports = (sequelize) => {
       population: {
         type: DataTypes.INTEGER,
         },
+      
+       
 
   },
   {

@@ -9,21 +9,28 @@ function SearchNameComponent() {
     const dispatch = useDispatch() 
     const byNameContries = useSelector(state => state.byNameCountries) 
     const {name} = useParams(); 
-
-    useEffect(() => { 
+   
+useEffect(() => { 
         dispatch(getCountriesByName(name))
     }, [dispatch, name]) 
 
+
+    
+    
     return( 
         <div>
             <div>
-                <h1 className="titleSearch">Resultados para "{name}"</h1>
+            {!byNameContries.length ?  <h1 className="titleSearch"  >No hay resultados para "{name}"</h1> : <h1 className="titleSearch"  >Resultados para "{name}"</h1>}
+                
+                
+                
             </div>
+            
             <div>
                 <CardsComponent allCountries={byNameContries}/>
             </div>
         </div>
     )
 };
-
+    
 export default SearchNameComponent;

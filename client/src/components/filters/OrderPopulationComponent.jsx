@@ -27,7 +27,7 @@ export default function OrderPopulationComponent() {
     return(
         <div>
             <div>
-                <select onChange={e => handleOrderPopulation(e)}> 
+                <select className="text-black" onChange={e => handleOrderPopulation(e)}> 
                     <option>Seleccionar</option>
                     <option value="max" >Mayor poblacion</option>
                     <option value="min" >Menor poblacion</option>

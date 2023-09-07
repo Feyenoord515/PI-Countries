@@ -29,7 +29,7 @@ export default function OrderNamesComponent() {
     return(
         <div>
             <div>
-                <select onChange={e => handleOrderName(e)}> 
+                <select className="text-black" onChange={e => handleOrderName(e)}> 
                     <option>Seleccionar</option>
                     <option value="asc" >Ascendente</option>
                     <option value="desc" >Descendente</option>

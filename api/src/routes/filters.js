@@ -50,3 +50,6 @@ router.get('/continent/:continent', async (req, res) => {
 
 
 module.exports = router;
+
+
+////filtros por continentes no funciona

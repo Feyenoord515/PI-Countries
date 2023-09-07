@@ -52,10 +52,11 @@ const getContinent = async (continent) => {
     try {
         let byContinent = await Country.findAll({
             where: {
-                continent: continent
+                continent:[continent]
             },
             include: [Activity]
         });
+        
         return byContinent
     } catch (error) {
         console.log('Error en get continent en la funcion ' + error)

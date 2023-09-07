@@ -73,7 +73,7 @@ function rootReducer(state = initialState, action) {
             }
         case FILTER_BY_ACTIVITIES: 
             if(action.payload.length !== 0){
-                const selectedActivities = action.payload
+                const selectedActivities = action.payload 
                 const filterActivities = state.backUpCountries.filter((country) => {
                     return selectedActivities.every(i => country.activities.map(activity => activity.name).includes(i)) //return true if every activity is in the country
                 })
